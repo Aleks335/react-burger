@@ -1,6 +1,8 @@
 import React from 'react';
 import {CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import style from './Ingredient.module.css'
+import PropTypes from "prop-types";
+import {ingredientPropTypes} from "../../../data-type/DataType";
 
 function Ingredient(props) {
     const {image, price, name} = props.item
@@ -20,5 +22,8 @@ function Ingredient(props) {
         </div>
     );
 }
-
+Ingredient.propTypes ={
+    addSelectedIngredient: PropTypes.func.isRequired,
+    ingredientPropTypes
+}
 export default Ingredient;

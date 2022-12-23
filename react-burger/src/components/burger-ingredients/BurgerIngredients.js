@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import IngredientsCategory from "./ingredients-category/IngredientsCategory";
 import style from "./BurgerIngredients.module.css"
+// import OrderDetails from "../order-details/OrderDetails";
 
 
 function BurgerIngredients(props) {
     const {ingredients, addSelectedIngredient} = props
     const [current, setCurrent] = useState('bun')
-    function f() {
+    function getIngredientsList() {
         return [
             {ingredients: ingredients.filter((item) => item.type === 'bun'), name: 'Булки', type: 'bun'},
             {ingredients: ingredients.filter((item) => item.type === 'sauce'), name: 'Соусы', type: 'sauce'},
@@ -27,7 +28,7 @@ function BurgerIngredients(props) {
             {/*norm*/}
             <div className={style.ingredients}>
                 {
-                    f().slice().sort((a, b) => {
+                    getIngredientsList().slice().sort((a, b) => {
                         if (a.type === current) return -1;
                         if (a.type !== current) return 1;
                     }).map((item) => <IngredientsCategory
