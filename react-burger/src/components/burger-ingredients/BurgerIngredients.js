@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import IngredientsCategory from "./ingredients-category/IngredientsCategory";
 import style from "./BurgerIngredients.module.css"
+import Ingredient from "./ingredients-category/Ingredient/Ingredient";
+import IngredientDetails from "../ingredient-details/IngredientDetails";
 // import OrderDetails from "../order-details/OrderDetails";
 
 
 function BurgerIngredients(props) {
-    const {ingredients, addSelectedIngredient} = props
+    const {ingredients, addSelectedIngredient, statesPopup } = props
     const [current, setCurrent] = useState('bun')
     function getIngredientsList() {
         return [
@@ -31,11 +33,11 @@ function BurgerIngredients(props) {
                     getIngredientsList().slice().sort((a, b) => {
                         if (a.type === current) return -1;
                         if (a.type !== current) return 1;
-                    }).map((item) => <IngredientsCategory
-                        addSelectedIngredient={props.addSelectedIngredient}
-                        ingredients={item.ingredients}
-                        title={item.name}>
-                    </IngredientsCategory>)}
+                    }).map((item) => {
+                        return <IngredientsCategory statesPopup={statesPopup} addSelectedIngredient={props.addSelectedIngredient} ingredients={item.ingredients} title={item.name}></IngredientsCategory>
+                    }
+                    )
+                }
             </div>
         </section>
     )

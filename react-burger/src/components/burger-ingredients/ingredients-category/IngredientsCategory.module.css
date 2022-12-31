@@ -13,3 +13,10 @@
 .name{
     position: absolute;
 }
+.infoButton{
+    position: absolute;
+}
+.counter{
+    position: absolute;
+    margin-right: 30px;
+}

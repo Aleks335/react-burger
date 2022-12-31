@@ -4,28 +4,29 @@ import style from './BurgerConstructor.module.css'
 import SelectedIngredient from "./selected-ingredient/SelectedIngredient";
 import OrderDetails from "../order-details/OrderDetails";
 function BurgerConstructor(props) {
-    const {selectedIngredients, deleteSelectedIngredient, closePopup} = props
+    const {selectedIngredients, deleteSelectedIngredient,
+        statesPopup, butt, suma} = props
+
     const firstBun = selectedIngredients.bun[0]
     const lastBun = selectedIngredients.bun[1]
 
-
     return (
         <section className={style.section}>
+            {/*<div className={style.elements} onClick={(()=>{statesPopup('ingredient', true)})}>*/}
             <div className={style.elements}>
-
                 {selectedIngredients.bun.length > 0 && <SelectedIngredient item={firstBun} isBun={true} type={'top'}></SelectedIngredient>}
-                <div className={style.centralElements}>{selectedIngredients.main.map((item, index) => <SelectedIngredient  index={index} deleteSelectedIngredient={deleteSelectedIngredient} item={item} isBun={false} type={undefined}></SelectedIngredient>)}</div>
+                <div className={style.centralElements}>{selectedIngredients.main.map((item, index) => <SelectedIngredient index={index} deleteSelectedIngredient={deleteSelectedIngredient} item={item} isBun={false} type={undefined}></SelectedIngredient>)}</div>
                 {selectedIngredients.bun.length > 1 && <SelectedIngredient item={lastBun} isBun={true} type={'bottom'}></SelectedIngredient>}
-
             </div>
-            <div className={style.total}>
+            { butt && <div className={style.total}>
                 <div className={style.price}>
-                    <span className="text text_type_digits-medium mr-2">610</span><CurrencyIcon type="primary"/>
+                        <span className="text text_type_digits-medium mr-2">{suma}</span><CurrencyIcon type="primary"/>
+                    </div>
+                    <Button type="primary" size="large"  onClick={(()=>{
+                        statesPopup('burger', true)
+                    })}>Оформить заказ</Button>
                 </div>
-                <Button type="primary" size="large"  onClick={(()=>{
-                    closePopup(true)
-                })}>Оформить заказ</Button>
-            </div>
+            }
         </section>
     )
 

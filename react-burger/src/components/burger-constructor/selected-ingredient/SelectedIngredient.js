@@ -10,16 +10,19 @@ function SelectedIngredient(props) {
 
     return (
         <div className={style.elements}>
-            {!isBun && <DragIcon type="primary"/>}
-            <ConstructorElement index={index} isLocked={isBun} text={item.name} type={type} price={item.price} thumbnail={item.image}
-                                handleClose={()=>{
-                                    deleteSelectedIngredient(index)
-                                }
-            }
-            />
-
+            {!isBun && <DragIcon type="primary" />}
+            <ConstructorElement
+                index={index}
+                isLocked={isBun}
+                text={item.name}
+                type={type}
+                price={item.price}
+                thumbnail={item.image}
+                handleClose={()=>{
+                    deleteSelectedIngredient(index)
+                }
+            }/>
         </div>
-
     );
 }
 SelectedIngredient.propTypes ={
